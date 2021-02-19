@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "pichi"
+version = "0.1.0"
+description = ""
+authors = ["Chris Land <chris.land@arcadia.io>"]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+auth0-python = "^3.14"
+fastapi = "^0.63"
+loguru = "^0.5"
+uvicorn = "^0.13"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+pylint = "^2.6"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
