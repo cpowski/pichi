@@ -1,11 +1,11 @@
 from fastapi import Depends
 from fastapi.requests import Request
-from fastapi.security import OAuth2PasswordBearer
+from fastapi.security import OAuth2AuthorizationCodeBearer
 from pichi.models.auth0 import Claims
 from pichi.services.auth0 import Auth0Service
 
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="bearer")
+oauth2_scheme = OAuth2AuthorizationCodeBearer(authorizationUrl="", tokenUrl="bearer")
 
 
 def get_auth0_service(request: Request):

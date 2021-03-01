@@ -13,6 +13,7 @@ from pichi.models.auth0 import (
 )
 from pichi.models.enums import StateAbbreviation
 from pichi.services.auth0 import Auth0Service
+from pichi.services.customers import get_specific_customer
 
 
 def map_user_summary(user: Auth0UserSummary) -> UserSummary:
@@ -71,9 +72,8 @@ def create(
     current_user_id: str,
     customer_acronym: str,
 ) -> User:
-    # validate
-
-    auth0.register_user()
+    customer = get_specific_customer(customer_acronym)
+    auth0.register_user(customer_acronym, customer.core_web_url)
     return User(
         id="",
         email="",
@@ -88,3 +88,17 @@ def create(
             phone_number="",
         ),
     )
+
+    # email: str
+    # username: str
+    # password: st
+    # first_name: st
+    # last_name: st
+    # npi: str
+    # credentials: str
+    # street_address: str
+    # city: str
+    # state: StateAbbreviation
+    # zip: str
+    # phone_number: str
+    # global_grants: UserGrants

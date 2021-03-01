@@ -29,7 +29,14 @@ def get_specific_customers(customer_keys: List[str]) -> List[Customer]:
     table = get_table("chimera-local-Customers")
     customers = list()
     for key in customer_keys:
-        response = table.get_item(Key={"customerAcronym": key})
-        customers.append(map_customer_item(response["Item"]))
+        result = table.get_item(Key={"customerAcronym": key})
+        customers.append(map_customer_item(result["Item"]))
 
     return customers
+
+
+def get_specific_customer(customer_acronym: str) -> Customer:
+    """return matching customer from the customers table"""
+    table = get_table("chimera-local-Customers")
+    result = table.get_item(Key={"customerAcronym": customer_acronym})
+    return map_customer_item(result["Item"])

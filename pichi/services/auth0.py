@@ -192,7 +192,7 @@ class Auth0Service:
         result = self._client.users.get(user_id)
         return UserProfile.parse_obj(result)
 
-    def register_user(self, customer_acronym: str):
+    def register_user(self, customer_acronym: str, url_for_verification_email: str):
         self._client.users.create(
             {
                 "connection": auth0_connection(customer_acronym),
